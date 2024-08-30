@@ -1,31 +1,33 @@
 import React, { useState } from 'react';
-import { TextField, Button, Box, Typography } from '@mui/material';
-import { Add as AddIcon } from '@mui/icons-material';
 
-const AddTaskForm = ({ addTask }) => {
+const AddTaskForm = ({ onAdd }) => {
   const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title.trim()) return;
-    addTask(title);
-    setTitle('');
+    if (title) {
+      onAdd({ title, description, isCompleted: false });
+      setTitle('');
+      setDescription('');
+    }
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} display="flex" alignItems="center" mb={4} p={2} borderRadius={1} bgcolor="#f0f0f0">
-      <TextField
-        variant="outlined"
-        label="New Task"
+    <form onSubmit={handleSubmit} className="add-task-form">
+      <input
+        type="text"
+        placeholder="Task Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        fullWidth
-        style={{ marginRight: 16 }}
       />
-      <Button type="submit" variant="contained" color="primary" startIcon={<AddIcon />}>
-        Add Task
-      </Button>
-    </Box>
+      <textarea
+        placeholder="Task Description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
+      <button type="submit">Add Task</button>
+    </form>
   );
 };
 

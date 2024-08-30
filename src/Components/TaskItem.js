@@ -1,31 +1,30 @@
 import React from 'react';
-import { Checkbox, IconButton, Typography, Box, Paper } from '@mui/material';
-import { Delete as DeleteIcon, CheckCircle , RadioButtonUnchecked } from '@mui/icons-material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import moment from 'moment';  // Import moment
 
-const TaskItem = ({ task, toggleTask, deleteTask }) => {
+const TaskItem = ({ task, onDelete, onToggle }) => {
+  // Format the createdAt date using moment
+  const formattedDate = moment(task.createdAt).format('MMMM Do YYYY, h:mm:ss a');
+
   return (
-    <Paper elevation={3} style={{ padding: 16, marginBottom: 8 }}>
-      <Box display="flex" alignItems="center" justifyContent="space-between">
-        <Box display="flex" alignItems="center">
-          <Checkbox
-            checked={task.isCompleted}
-            onChange={() => toggleTask(task.id)}
-            color="primary"
-            icon={<RadioButtonUnchecked />}
-            checkedIcon={<CheckCircle />}
-          />
-          <Typography
-            variant="body1"
-            style={{ textDecoration: task.isCompleted ? 'line-through' : 'none', flexGrow: 1 }}
-          >
-            {task.title}
-          </Typography>
-        </Box>
-        <IconButton onClick={() => deleteTask(task.id)} color="error">
-          <DeleteIcon />
-        </IconButton>
-      </Box>
-    </Paper>
+    <div className="task-item">
+      <label style={{ display: 'flex', alignItems: 'center' }}>
+        <input
+          type="checkbox"
+          checked={task.isCompleted}
+          onChange={() => onToggle(task.id)}
+          style={{ marginRight: '8px' }}
+        />
+        <h3 style={{ textDecoration: task.isCompleted ? 'line-through' : 'none' }}>
+          {task.title}
+        </h3>
+      </label>
+      <p>{task.description}</p>
+      <p>{formattedDate}</p>  
+      <button onClick={() => onDelete(task.id)}>
+        <DeleteIcon />
+      </button>
+    </div>
   );
 };
 

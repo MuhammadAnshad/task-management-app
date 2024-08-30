@@ -1,0 +1,62 @@
+.app {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .task-list {
+    margin-top: 20px;
+  }
+  
+  .task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .task-item h3 {
+    margin: 0;
+    cursor: pointer;
+  }
+  
+  .add-task-form input, .add-task-form textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .add-task-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .filter-tasks {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .filter-tasks button {
+    margin: 0 5px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    cursor: pointer;
+  }
+  
+  .filter-tasks .active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  

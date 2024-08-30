@@ -1,34 +1,12 @@
 import React from 'react';
-import { Button, ButtonGroup, Box } from '@mui/material';
-import { FilterList as FilterIcon } from '@mui/icons-material';
 
-const FilterTasks = ({ filter, setFilter }) => {
+const FilterTasks = ({ filter, onFilterChange }) => {
   return (
-    <Box mb={4}>
-      <ButtonGroup variant="contained" color="primary" aria-label="outlined button group">
-        <Button
-          onClick={() => setFilter('All')}
-          variant={filter === 'All' ? 'contained' : 'outlined'}
-          startIcon={<FilterIcon />}
-        >
-          All
-        </Button>
-        <Button
-          onClick={() => setFilter('Active')}
-          variant={filter === 'Active' ? 'contained' : 'outlined'}
-          startIcon={<FilterIcon />}
-        >
-          Active
-        </Button>
-        <Button
-          onClick={() => setFilter('Completed')}
-          variant={filter === 'Completed' ? 'contained' : 'outlined'}
-          startIcon={<FilterIcon />}
-        >
-          Completed
-        </Button>
-      </ButtonGroup>
-    </Box>
+    <div className="filter-tasks">
+      <button onClick={() => onFilterChange('all')} className={filter === 'all' ? 'active' : ''}>All</button>
+      <button onClick={() => onFilterChange('active')} className={filter === 'active' ? 'active' : ''}>Active</button>
+      <button onClick={() => onFilterChange('completed')} className={filter === 'completed' ? 'active' : ''}>Completed</button>
+    </div>
   );
 };
 

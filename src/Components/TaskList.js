@@ -1,15 +1,15 @@
 import React from 'react';
 import TaskItem from './TaskItem';
 
-const TaskList = ({ tasks, toggleTask, deleteTask }) => {
+const TaskList = ({ tasks, onDelete, onToggle }) => {
   return (
-    <div>
+    <div className="task-list">
       {tasks.map(task => (
         <TaskItem
           key={task.id}
           task={task}
-          toggleTask={toggleTask}
-          deleteTask={deleteTask}
+          onDelete={onDelete}
+          onToggle={onToggle}
         />
       ))}
     </div>
